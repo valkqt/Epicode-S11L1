@@ -11,10 +11,6 @@ function Job({ data }) {
   const favouriteJobs = useSelector((state) => state.favourites.list);
   const [error, setError] = useState(false);
 
-  function checkDuplicates(arr) {
-    arr.map()
-  }
-
   return (
     <>
       {error && <DismissableAlert show={setError} text="Job Already Favourited!!" type="warning"/>}
@@ -48,6 +44,5 @@ function Job({ data }) {
   );
 }
 
-function addToFavs() {}
 
 export default Job;
