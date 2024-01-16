@@ -4,11 +4,16 @@ import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import DismissableAlert from "./DismissableAlert";
+import { addFavouriteAction } from "../redux/actions";
 
 function Job({ data }) {
   const dispatch = useDispatch();
-  const favouriteJobs = useSelector((state) => state.favourites);
+  const favouriteJobs = useSelector((state) => state.favourites.list);
   const [error, setError] = useState(false);
+
+  function checkDuplicates(arr) {
+    arr.map()
+  }
 
   return (
     <>
@@ -28,11 +33,8 @@ function Job({ data }) {
         <Col xs={1}>
           <Button
             onClick={() => {
-              if (!favouriteJobs.includes(data)) {
-                dispatch({
-                  type: "addFavourite",
-                  payload: data,
-                });
+              if (!favouriteJobs.find(elem => elem._id === data._id)) {
+                dispatch(addFavouriteAction(data))
               } else {
                 setError(true);
               }
